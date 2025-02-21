@@ -3,10 +3,10 @@
 from google_play_scraper import reviews
 import pandas as pd
 
-# 1️⃣ 크롤링할 앱 ID 설정 (구글 플레이 스토어 URL에서 확인 가능)
+# 크롤링할 앱 ID 설정 (구글 플레이 스토어 URL에서 확인 가능)
 app_id = "kr.epopsoft.word"  # 예: 카카오톡
 
-# 2️⃣ 리뷰 크롤링 (200개 가져오기)
+# 리뷰 크롤링 (200개 가져오기)
 review_data, _ = reviews(
     app_id,
     lang="ko",  # 한국어 리뷰
@@ -14,7 +14,7 @@ review_data, _ = reviews(
     count=150,  # 가져올 리뷰 개수
 )
 
-# 3️⃣ 데이터프레임으로 변환
+# 데이터프레임으로 변환
 df = pd.DataFrame(review_data)
 
 df.to_csv('말해보카_250208.csv',index=False, encoding='utf-8-sig')
@@ -47,7 +47,7 @@ for app_id in app_ids:
             count=10000,  # 가져올 리뷰 개수 (앱당 150개)
         )
         
-        # 4️⃣ 데이터프레임 변환 및 'app_id' 컬럼 추가
+        # 데이터프레임 변환 및 'app_id' 컬럼 추가
         df = pd.DataFrame(review_data)
         df["app_id"] = app_id  # 앱 ID 컬럼 추가
         all_reviews.append(df)  # 리스트에 추가
